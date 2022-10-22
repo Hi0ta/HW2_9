@@ -34,6 +34,14 @@ public class Main {
            counterG++;
        }
         System.out.println();
+        Main.addNumbers("str1", 2);
+        Main.addNumbers("str2", 1);
+        Main.addNumbers("str1", 5);
+       // Main.addNumbers("str1", 5);   если раскоментировать выбрасывается исключение
+        System.out.println(numbers);
+
+
+        System.out.println();
         List<Integer> number1 = Arrays.asList(5, 6, 8); //19
         List<Integer> number2 = Arrays.asList(521, 658, 842); //2021
         List<Integer> number3 = Arrays.asList(1, 326, 88); //415
@@ -46,7 +54,6 @@ public class Main {
         String string5 = "string5";
 
         Map<String, List<Integer>> random = new HashMap<>();
-       // random.put("первая", List.of(5, 6, 8)); //19
         random.put(string1, number1);
         random.put(string2, number2);
         random.put(string3, number3);
@@ -84,5 +91,13 @@ public class Main {
         random2.put(10,"десятый");
         System.out.println(random2);
 
+    }
+    public static Map<String, Integer> numbers = new HashMap<>();
+    public static void addNumbers(String string, Integer integer){
+       if(numbers.containsKey(string) && numbers.containsValue(integer)){
+       throw new IllegalArgumentException("дважды добавить одно и то же нельзя!!");
+        }else {
+           numbers.put(string, integer);
+       }
     }
 }
